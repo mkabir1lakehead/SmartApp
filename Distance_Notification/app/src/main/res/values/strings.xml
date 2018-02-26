@@ -1,0 +1,30 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">>
+    <string name="hint_operator_name">你好</string>
+    <string name="hello">Hello World, Date!</string>
+    <string name="app_name">SmartApp</string>
+    <string name="strInputAccHint">输入帐号</string>
+    <string name="strAccInputLabel">Account</string>
+    <string name="strPswInputLabel">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Signup</string>
+    <string name="cancel">Cancel</string>
+    <string name="account_empty">Username not found，Please enter correct username！</string>
+    <string name="pwd_empty">Password does not matched，Try valid password！</string>
+    <string name="pwd_not_fit_user">Wrong password，Please enter valid password！</string>
+    <string name="pwd_new_empty">新密码为空，请重新输入！</string>
+    <string name="pwd_check_empty">密码确认为空，请重新输入！</string>
+    <string name="pwd_not_the_same">密码确认不正确，请重新输入密码！</string>
+    <string name="register_fail">Signup failed，Please try again！</string>
+    <string name="register_success">Signup successfully！</string>
+    <string name="resetpwd_fail">密码修改失败，请重新尝试！</string>
+    <string name="resetpwd_success">密码修改成功！</string>
+    <string name="login_success">Login successful！</string>
+    <string name="cancel_success">注销成功！</string>
+    <string name="login_fail">Login failed！Please try again！</string>
+    <string name="cancel_fail">注销失败！请输入正确的用户名与密码！</string>
+    <string name="name_already_exist">用户名【<xliff:g example="tom" id="id1">%1$s</xliff:g>】已存在，请重新输入！</string>
+    <string name="name_not_exist">用户名【<xliff:g example="tom" id="id1">%1$s</xliff:g>】不存在，请重新输入！</string>
+    <string name="user_login_success">用户：<xliff:g example="tom" id="id2">%1$s</xliff:g>登录，欢迎光临！</string>
+
+    <string name="local_service_started">Service starting successful</string>
+</resources>
