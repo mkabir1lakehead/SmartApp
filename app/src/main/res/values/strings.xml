@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">smartapp</string>
+    <string name="facebook_app_id">167745650544560</string>
+    <string name="fb_login_protocol_scheme">fb167745650544560</string>
+    <string name="icon_size">90dp</string>
+    <string name="info_setting">UserInfo</string>
+    <string name="camera_setting">Camera</string>
+    <string name="app_setting">AppStuts</string>
+    <string name="notify_setting">Notification</string>
+    <string name="supervise_setting">Supervise</string>
+
+
+
+    <string name="strInputAccHint">输入帐号</string>
+    <string name="strAccInputLabel">Account</string>
+    <string name="strPswInputLabel">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Signup</string>
+    <string name="cancel">Cancel</string>
+    <string name="account_empty">Username not found，Please enter correct username！</string>
+    <string name="pwd_empty">Password does not matched，Try valid password！</string>
+    <string name="pwd_not_fit_user">Wrong password，Please enter valid password！</string>
+    <string name="pwd_new_empty">新密码为空，请重新输入！</string>
+    <string name="pwd_check_empty">密码确认为空，请重新输入！</string>
+    <string name="pwd_not_the_same">密码确认不正确，请重新输入密码！</string>
+    <string name="register_fail">Signup failed，Please try again！</string>
+    <string name="register_success">Signup successfully！</string>
+    <string name="resetpwd_fail">密码修改失败，请重新尝试！</string>
+    <string name="resetpwd_success">密码修改成功！</string>
+    <string name="login_success">Login successful！</string>
+    <string name="cancel_success">注销成功！</string>
+    <string name="login_fail">Login failed！Please try again！</string>
+    <string name="cancel_fail">注销失败！请输入正确的用户名与密码！</string>
+    <string name="local_service_started">Service starting successful</string>
+
+
+</resources>

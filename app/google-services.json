@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "34210255178",
+    "project_id": "smartapp-6e605"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34210255178:android:9abafb0152d6e64c",
+        "android_client_info": {
+          "package_name": "com.longfeizeng.smartapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34210255178-omc9volh25lqtgd77b0408r44ic5rst3.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "34210255178-tkmqr6iu8n15fsur7gdk1l1jn7jbrs84.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.longfeizeng.smartapp",
+            "certificate_hash": "efc527868bfd6636177333e7591ca563129aa7c5"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLoGwdN9lZK7lSrL7u-T0bVyF7uyh4cNw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
