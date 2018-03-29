@@ -1,0 +1,219 @@
+package com.longfeizeng.smartapp.server;
+
+/**
+ * Created by zlf on 24/02/18.
+ */
+
+import java.io.IOException;
+
+import android.Manifest;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.hardware.Camera;
+import android.os.Binder;
+import android.os.Build;
+import android.os.IBinder;
+import android.os.SystemClock;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.view.SurfaceView;
+import android.widget.Toast;
+
+import android.media.FaceDetector;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PointF;
+import android.graphics.RectF;
+
+import com.facebook.login.Login;
+import com.longfeizeng.smartapp.R;
+
+public class LocalService extends Service {
+
+    private AlarmManager am = null;
+    private Camera camera;
+
+    private final IBinder mBinder = new LocalBinder();
+
+    private NotificationManager mNM;
+    private Long TIME_INTERVAL = Long.valueOf( 15*1000 );
+
+    private int NOTIFICATION = R.string.local_service_started;
+
+    PendingIntent pi;
+
+    /**
+     * Class for clients to access. Because we know this service always runs in
+     * the same process as its clients, we don't need to deal with IPC.
+     */
+    public class LocalBinder extends Binder {
+        public LocalService getService() {
+            return LocalService.this;
+        }
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onCreate() {
+
+
+        mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        showNotification();
+        init();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void init() {
+        am = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        // 注册广播
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("com.vegetables_source.alarm");
+        registerReceiver(alarmReceiver, filter);
+
+        Intent intent = new Intent();
+        intent.setAction("com.vegetables_source.alarm");
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0, intent, 0);
+        am.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, System.currentTimeMillis() + TIME_INTERVAL, pi);// 马上开始，每1分钟触发一次
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.i("LocalService", "Received start id " + startId + ": " + intent);
+
+        return START_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        mNM.cancel(NOTIFICATION);
+
+        cancelAlertManager();
+
+        if (camera != null) {
+            camera.release();
+            camera = null;
+        }
+
+        // Toast.makeText(this, R.string.local_service_stopped, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return mBinder;
+    }
+
+    /**
+     * Show a notification while this service is running.
+     */
+    private void showNotification() {
+
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
+                new Intent(this, Login.class), 0);
+        CharSequence text = getText( R.string.local_service_started);
+        Notification notification =new Notification.Builder(this)
+                .setContentTitle("This is content title")
+                .setContentText("This is ticker text")
+                .setContentIntent(contentIntent)
+                .build();
+
+
+
+        //notification.setLatestEventInfo(this,
+        //       getText(R.string.local_service_label), text, contentIntent);
+
+        //mNM.notify(NOTIFICATION, notification);
+    }
+
+    private void cancelAlertManager() {
+        Intent intent = new Intent();
+        intent.setAction("com.vegetables_source.alarm");
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0, intent, 0);
+        am.cancel(pi);
+
+        // 注销广播
+        unregisterReceiver(alarmReceiver);
+    }
+
+    BroadcastReceiver alarmReceiver = new BroadcastReceiver() {
+
+        @RequiresApi(api = Build.VERSION_CODES.M)
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if ("com.vegetables_source.alarm".equals(intent.getAction())) {
+
+                Log.d( "trigger","-----------10 second-------------" );
+                camera = openFacingFrontCamera();
+                if (camera != null) {
+                    SurfaceView dummy = new SurfaceView(getBaseContext());
+                    try {
+                        camera.setPreviewDisplay(dummy.getHolder());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    camera.startPreview();
+
+                    camera.takePicture(null, null, new PhotoHandler(
+                            getApplicationContext()));
+                    camera.release();
+                    setAlarmTime(context, System.currentTimeMillis() + TIME_INTERVAL,
+                            intent);
+                }
+
+            }
+
+        }
+
+    };
+    public static void setAlarmTime(Context context, long timeInMillis, Intent intent) {
+        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        PendingIntent sender = PendingIntent.getBroadcast(context, intent.getIntExtra("id", 0),
+                intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        int interval = (int) intent.getLongExtra("intervalMillis", 0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            am.setWindow(AlarmManager.RTC_WAKEUP, timeInMillis, interval, sender);
+        }
+    }
+
+    private Camera openFacingFrontCamera() {
+        Camera cam = null;
+        Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+        ;
+        for (int camIdx = 0, cameraCount = Camera.getNumberOfCameras(); camIdx < cameraCount; camIdx++) {
+            Camera.getCameraInfo(camIdx, cameraInfo);
+            if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                try {
+                    Log.d( "find----","haha" );
+                    cam = Camera.open(camIdx);
+                    Log.d( "open----","haha" );
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return cam;
+    }
+}

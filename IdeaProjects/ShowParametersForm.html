@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Sample Form using Post</title>
+</head>
+<body bgcolor="#7fff00">
+    <h1 align="center">A Sample FORM using Post</h1>
+
+    <form action ="ShowParameters" method="get">
+        Item Number:<input type = "text" name = "itemNum"><br>
+        Quantity:<input type = text name = quanlity><br>
+        Price Each:<input type = text name = price value = $><br>
+        Frist Name: <input type = text name = firstname><br>
+        Middle Name:<input type="text" name="middlename"><br>
+        Last Name:<input type = text name = lastname><br>
+        Shipping Address:<textarea name="address" rows="3" cols="40"></textarea><br>
+        Credit Card:<br>
+        &nbsp;&nbsp;<input type = radio name="cardType" value="Visa">Visa<br>
+        &nbsp;&nbsp;<input type = radio name="cardType" value="Master Card">Master Card<br>
+        &nbsp;&nbsp;<input type = radio name="cardType" value="Amex">American Express<br>
+        &nbsp;&nbsp;<input type = radio name="cardType" value="Discover">Discover<br>
+        &nbsp;&nbsp;<input type = radio name="cardType" value="Java SmartCard">Java SmartCard<br>
+
+        Credit Card Number:
+        <input type="password" name="cardNum"><br>
+        Repeat Credit Card Number:
+        <input type="password" name="cardNum"><br><br>
+        <center>
+            <input type="submit" value="Submit Order">
+        </center>
+    </form>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.longfeizeng.smartapp.view.Register">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/first_name"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:hint="First Name" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/last_name"
+        android:layout_centerHorizontal="true"
+        android:hint="Last Name" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/phone"
+        android:hint="Phone Number" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/resetpwd_edit_pwd_old"
+        android:hint="Password"
+        />
+
+
+    <EditText
+        android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/resetpwd_edit_pwd_new"
+        android:layout_centerHorizontal="true"
+        android:hint="Confirm Password" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:id="@+id/register_btn_sure"
+        android:textSize="20dp"
+        android:textColor="#fbfbfc"
+        android:background="#186dd6"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="abolish"
+        android:id="@+id/register_btn_cancel"
+        android:textSize="20dp"
+        android:textColor="#f4f5f5"
+        android:background="#186dd6"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+        <servlet>
+            <servlet-name>HW</servlet-name>
+            <servlet-class>com.longfeizeng.HelloworldServlet</servlet-class>
+        </servlet>
+    
+        <servlet-mapping>
+            <servlet-name>HW</servlet-name>
+            <url-pattern>/HelloWorldServlet</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>TS</servlet-name>
+            <servlet-class>TestLifeCycleServlet</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>TS</servlet-name>
+            <url-pattern>/TestLifeCycleServlet</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>TP</servlet-name>
+            <servlet-class>ThreeParams</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>TP</servlet-name>
+            <url-pattern>/ThreeParams</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>SP</servlet-name>
+            <servlet-class>ShowParameters</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>SP</servlet-name>
+            <url-pattern>/ShowParameters</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>SetCookies</servlet-name>
+            <servlet-class>SetCookies</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>SetCookies</servlet-name>
+            <url-pattern>/SetCookies</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>ShowCookies</servlet-name>
+            <servlet-class>ShowCookies</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>ShowCookies</servlet-name>
+            <url-pattern>/ShowCookies</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>SessionInfoServlet</servlet-name>
+            <servlet-class>SessionInfoServlet</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>SessionInfoServlet</servlet-name>
+            <url-pattern>/SessionInfoServlet</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>ShowSession</servlet-name>
+            <servlet-class>ShowSession</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>ShowSession</servlet-name>
+            <url-pattern>/ShowSession</url-pattern>
+        </servlet-mapping>
+        <servlet>
+            <servlet-name>TestServletContext</servlet-name>
+            <servlet-class>TestServletContext</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>TestServletContext</servlet-name>
+            <url-pattern>/TestServletContext</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>ShowRs</servlet-name>
+            <servlet-class>ShowRs</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>ShowRs</servlet-name>
+            <url-pattern>/ShowRs</url-pattern>
+        </servlet-mapping>
+
+
+        <servlet>
+            <servlet-name>ShowRsUseBean</servlet-name>
+            <servlet-class>ShowRsUseBean</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>ShowRsUseBean</servlet-name>
+            <url-pattern>/ShowRsUseBean</url-pattern>
+        </servlet-mapping>
+        <servlet>
+            <servlet-name>Register</servlet-name>
+            <servlet-class>Register</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>Register</servlet-name>
+            <url-pattern>/Register</url-pattern>
+        </servlet-mapping>
+
+
+        <servlet>
+            <servlet-name>Supervise</servlet-name>
+            <servlet-class>Supervise</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>Supervise</servlet-name>
+            <url-pattern>/Supervise</url-pattern>
+        </servlet-mapping>
+</web-app>
